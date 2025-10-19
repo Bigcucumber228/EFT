@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Карты — EFT</title>
+	<link rel="stylesheet" href="../main.css">
+	<link rel="stylesheet" href="maps.css">
+</head>
+<body>
+	<header class="cover">
+		<div class="cover-inner">
+			<h1 class="cover-title">Карты</h1>
+			<img src="logo.png" alt="Logo" class="cover-logo">
+			<button class="nav-toggle" aria-expanded="false" aria-label="Открыть меню">☰</button>
+			<nav class="cover-nav" aria-label="Main navigation">
+				<a href="../main.html">Главная</a>
+				<a href="../guns/guns.html">Оружие</a>
+				<a href="../maps/maps.html">Карты</a>
+				<a href="../mechanics/mechanics.html">Механики</a>
+			</nav>
+		</div>
+	</header>
+
+	<main>
+		<section class="content-section maps-gallery">
+			<h2>Обзор карт</h2>
+			<p>Подведите курсор к миниатюре, чтобы увидеть подсказку и будьте на чеку</p>
+
+			<div class="grid">
+				<figure tabindex="0">
+					<img src="customs.jpg" alt="Таможня">
+					<figcaption>
+						<strong>Таможня</strong>
+						<p class="desc">Средняя по размеру контейнерная зона — привычная тактика и стабильный лут.</p>
+					</figcaption>
+				</figure>
+
+				<figure tabindex="0">
+					<img src="factory.jpg" alt="Фабрика">
+					<figcaption>
+						<strong>Фабрика</strong>
+						<p class="desc">Небольшая карта — короткие коридоры, быстрые стычки.</p>
+					</figcaption>
+				</figure>
+
+				<figure tabindex="0">
+					<img src="woods.jpg" alt="Лес">
+					<figcaption>
+						<strong>Лес</strong>
+						<p class="desc">Большая лесная карта — дальние подходы и скрытые укрытия.</p>
+					</figcaption>
+				</figure>
+
+				<figure tabindex="0" class="no-below">
+					<img src="streets.jpg" alt="Улицы">
+					<figcaption>
+						<strong>Улицы</strong>
+						<p class="desc">Средняя городская карта — плотная застройка и выгодные позиции на крышах.</p>
+					</figcaption>
+				</figure>
+
+
+				<figure tabindex="0">
+					<img src="interchange.jpg" alt="Торговый центр">
+					<figcaption>
+						<strong>Торговый центр</strong>
+						<p class="desc">Крупный торговый центр — много этажей и щедрый лут, рискованно внутри.</p>
+					</figcaption>
+				</figure>
+
+				<figure tabindex="0">
+					<img src="reserve.jpg" alt="Резерв">
+					<figcaption>
+						<strong>Резерв</strong>
+						<p class="desc">Большая территория с военными объектами — удобны засады и дальний бой.</p>
+					</figcaption>
+				</figure>
+
+				<figure tabindex="0">
+					<img src="lab.jpg" alt="Лаборатория">
+					<figcaption>
+						<strong>Лаборатория</strong>
+						<p class="desc">Малая закрытая локация — плотные коридоры и ценные точки.</p>
+					</figcaption>
+				</figure>
+
+				<figure tabindex="0" class="no-below">
+					<img src="labyrinth.jpg" alt="Лабиринт">
+					<figcaption>
+						<strong>Лабиринт</strong>
+						<p class="desc">Небольшой лабиринт — узкие проходы, медленное и осторожное движение.</p>
+					</figcaption>
+				</figure>
+
+				<figure tabindex="0">
+					<img src="lighthouse.jpg" alt="Маяк">
+					<figcaption>
+						<strong>Маяк</strong>
+						<p class="desc">Средняя прибрежная карта — открытые пляжи и дальние обзоры.</p>
+					</figcaption>
+				</figure>
+
+				<figure tabindex="0">
+					<img src="shoreline.jpg" alt="Шорлайн">
+					<figcaption>
+						<strong>Побережье</strong>
+						<p class="desc">Большая и разнообразная — дома, курорт и множество обходных путей.</p>
+					</figcaption>
+				</figure>
+
+				<figure tabindex="0">
+					<img src="ground-zero.jpg" alt="Ground Zero">
+					<figcaption>
+						<strong>Ground Zero</strong>
+						<p class="desc">Открытая зона — редкие укрытия, важен контроль обзора.</p>
+					</figcaption>
+				</figure>
+
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<div class="footer-inner">
+			<div class="footer-left">
+				<small>© 2025 Справочник — Escape From Tarkov. Все права защищены.</small>
+			</div>
+			<div class="footer-right">
+				<small class="muted">Версия 1.0 · Обновлено: 2025</small>
+				<div class="site-note">Краткий справочник по EFT — советы, карты и механики. Сделано для сообщества игроков.</div>
+			</div>
+		</div>
+	</footer>
+	<script>
+		(function(){
+			const toggle = document.querySelector('.nav-toggle');
+			const nav = document.querySelector('.cover-nav');
+			if(toggle && nav){
+				toggle.addEventListener('click', function(){
+					const expanded = this.getAttribute('aria-expanded') === 'true';
+					this.setAttribute('aria-expanded', String(!expanded));
+					nav.classList.toggle('open');
+				});
+			}
+
+			(function(){
+				const links = document.querySelectorAll('.cover-nav a');
+				const current = location.pathname.replace(/\/$/, '');
+				links.forEach(a => {
+					try{
+						const href = a.getAttribute('href');
+						const linkPath = new URL(href, location.href).pathname.replace(/\/$/, '');
+						if(linkPath === current || current.endsWith(linkPath) || linkPath.endsWith(current)){
+							a.classList.add('active');
+						}
+					}catch(e){}
+				});
+			})();
+		})();
+	</script>
+
+	<script>
+		(function(){
+			const figures = document.querySelectorAll('.grid figure');
+			function getGridGap(){
+				const grid = document.querySelector('.grid');
+				if(!grid) return 18;
+				const cs = getComputedStyle(grid);
+				const gapVal = cs.gap || cs.columnGap || cs.rowGap || '18px';
+				return parseInt(gapVal,10) || 18;
+			}
+
+			const FIT_BUFFER = 48;
+
+			function checkFit(fig){
+				const desc = fig.querySelector('.desc');
+				if(!desc) return;
+				const rect = fig.getBoundingClientRect();
+				const descWidth = parseInt(getComputedStyle(desc).width,10) || 240;
+				const gap = getGridGap();
+				const spaceRight = window.innerWidth - (rect.right + gap);
+				if(fig.classList.contains('no-below')){
+					fig.classList.remove('desc-below');
+					return;
+				}
+				if(spaceRight < descWidth + FIT_BUFFER){
+					fig.classList.add('desc-below');
+				}else{
+					fig.classList.remove('desc-below');
+				}
+			}
+			figures.forEach(f => {
+				f.addEventListener('mouseenter', () => checkFit(f));
+				f.addEventListener('focusin', () => checkFit(f));
+				f.addEventListener('mouseleave', () => f.classList.remove('desc-below'));
+				f.addEventListener('focusout', () => f.classList.remove('desc-below'));
+			});
+			document.addEventListener('DOMContentLoaded', () => figures.forEach(checkFit));
+			let resizeTimer = null;
+			window.addEventListener('resize', () => {
+				clearTimeout(resizeTimer);
+				resizeTimer = setTimeout(() => figures.forEach(checkFit), 120);
+			});
+		})();
+	</script>
+</body>
+</html>
